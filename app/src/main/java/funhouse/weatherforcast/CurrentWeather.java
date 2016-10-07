@@ -1,5 +1,6 @@
 package funhouse.weatherforcast;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
@@ -9,7 +10,7 @@ public class CurrentWeather {
     private String mIcon;
     private long mTime;
     private double mTemperatureC;
-    private double mTemperatureF;
+    private String mTemperatureF;
     private double mHumidity;
     private double mPrecipChance;
     private String mSummery;
@@ -92,14 +93,16 @@ public class CurrentWeather {
         mTemperatureC = temperatureC;
     }
 
-    public double getTemperatureF() {
-        mTemperatureF = ((mTemperatureC - 32) * 5 / 9);
-        return (int) Math.round(mTemperatureF);
+    public String getTemperatureF() {
+        double mTemperatureF = ((mTemperatureC - 32) * 5 / 9);
+        DecimalFormat df = new DecimalFormat("##");
+      //  int f = (int) Math.round(mTemperatureF);
+        return df.format(mTemperatureF);
     }
 
-    public void setTemperatureF(double temperatureF) {
-        mTemperatureF = temperatureF;
-    }
+//    public void setTemperatureF(double temperatureF) {
+//        mTemperatureF = temperatureF;
+//    }
 
     public double getHumidity() {
         return mHumidity;

@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateDisplay() {
         mTemperatureLabelC.setText(mCurrentWeather.getTemperatureC() + "");
-        mTemperatureLabelF.setText(mCurrentWeather.getTemperatureF()+ "");
+        mTemperatureLabelF.setText(mCurrentWeather.getTemperatureF() );
         mTimeLabel.setText(mCurrentWeather.getFormattedDayOfWeek());
         mHumidityValue.setText(mCurrentWeather.getHumidity() + "");
         mPrecipValue.setText(mCurrentWeather.getPrecipChance() + "%");
