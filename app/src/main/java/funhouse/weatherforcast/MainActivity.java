@@ -29,8 +29,6 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    //http://www.zembedded.com/setting-up-eclipse-and-android-sdk/  how to convert C to F.
-    //need to add F
     // need to add date (Thu, 9/5/2016)
     //need to add highest/lowest temp
     //change city function
@@ -46,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView mPrecipValue;
     private TextView mSummaryLabel;
     private ImageView mIconImageView;
-    private ImageView mRefreshImageView;
+    private ImageView mRefreshImageIcon;
     private ProgressBar mProgressBar;
 
 
@@ -64,14 +62,14 @@ public class MainActivity extends AppCompatActivity {
         mPrecipValue = (TextView) findViewById(R.id.precipValue);
         mSummaryLabel = (TextView) findViewById(R.id.summaryLabel);
         mIconImageView = (ImageView) findViewById(R.id.iconImageView);
-        mRefreshImageView = (ImageView) findViewById(R.id.refreshImageView);
+        mRefreshImageIcon = (ImageView) findViewById(R.id.refreshImageOnToolbar);
         mProgressBar = (ProgressBar)findViewById(R.id.progressBar);
 
         mProgressBar.setVisibility(View.INVISIBLE);
         final double latitude = 40.730610;
         final double longitude = -73.935242;
 
-        mRefreshImageView.setOnClickListener(new View.OnClickListener() {
+        mRefreshImageIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getForecast(latitude,longitude);
@@ -146,22 +144,18 @@ public class MainActivity extends AppCompatActivity {
     private void toggleRefresh() {
         if(mProgressBar.getVisibility() == View.INVISIBLE) {
             mProgressBar.setVisibility(View.VISIBLE);
-            mRefreshImageView.setVisibility(View.INVISIBLE);
+            mRefreshImageIcon.setVisibility(View.INVISIBLE);
         }
         else {
             mProgressBar.setVisibility(View.INVISIBLE);
-            mRefreshImageView.setVisibility(View.VISIBLE);
+            mRefreshImageIcon.setVisibility(View.VISIBLE);
         }
     }
 
     private void updateDisplay() {
-//        Calendar calendar = Calendar.getInstance();
-//        Date date = calendar.getTime();
-//        String weekday = new SimpleDateFormat("EE", Locale.ENGLISH).format(date.getTime());
-
         mTemperatureLabelC.setText(mCurrentWeather.getTemperatureC() + "");
-        mTemperatureLabelF.setText(mCurrentWeather.getTemperatureF()+"");
-        mTimeLabel.setText(mCurrentWeather.getFormattedTime());
+        mTemperatureLabelF.setText(mCurrentWeather.getTemperatureF()+ "");
+        mTimeLabel.setText(mCurrentWeather.getFormattedDayOfWeek());
         mHumidityValue.setText(mCurrentWeather.getHumidity() + "");
         mPrecipValue.setText(mCurrentWeather.getPrecipChance() + "%");
         mSummaryLabel.setText(mCurrentWeather.getSummery());
@@ -195,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
         currentWeather.setIcon(currently.getString("icon"));
         currentWeather.setSummery(currently.getString("summary"));
         currentWeather.setTemperatureC(currently.getDouble("temperature"));
+     //   currentWeather.setTemperatureF((currently.getDouble("temperature")-32)*5/9);
         currentWeather.setTime(currently.getLong("time"));
         currentWeather.setPrecipChance(currently.getDouble("precipProbability"));
         currentWeather.setTimeZone(timezone);

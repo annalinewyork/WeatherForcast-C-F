@@ -23,37 +23,28 @@ public class CurrentWeather {
         mIcon = icon;
     }
 
-    public int getIconId(){
+    public int getIconId() {
         int iconId = R.drawable.clear_day;
 
         if (mIcon.equals("clear-day")) {
             iconId = R.drawable.clear_day;
-        }
-        else if (mIcon.equals("clear-night")) {
+        } else if (mIcon.equals("clear-night")) {
             iconId = R.drawable.clear_night;
-        }
-        else if (mIcon.equals("rain")) {
+        } else if (mIcon.equals("rain")) {
             iconId = R.drawable.rain;
-        }
-        else if (mIcon.equals("snow")) {
+        } else if (mIcon.equals("snow")) {
             iconId = R.drawable.snow;
-        }
-        else if (mIcon.equals("sleet")) {
+        } else if (mIcon.equals("sleet")) {
             iconId = R.drawable.sleet;
-        }
-        else if (mIcon.equals("wind")) {
+        } else if (mIcon.equals("wind")) {
             iconId = R.drawable.wind;
-        }
-        else if (mIcon.equals("fog")) {
+        } else if (mIcon.equals("fog")) {
             iconId = R.drawable.fog;
-        }
-        else if (mIcon.equals("cloudy")) {
+        } else if (mIcon.equals("cloudy")) {
             iconId = R.drawable.cloudy;
-        }
-        else if (mIcon.equals("partly-cloudy-day")) {
+        } else if (mIcon.equals("partly-cloudy-day")) {
             iconId = R.drawable.partly_cloudy_day;
-        }
-        else if (mIcon.equals("partly-cloudy-night")) {
+        } else if (mIcon.equals("partly-cloudy-night")) {
             iconId = R.drawable.partly_cloudy_night;
         }
 
@@ -72,13 +63,22 @@ public class CurrentWeather {
         return mTime;
     }
 
-    public String getFormattedTime(){
+    //get current time but due to mobile phone usually has time showing on screen, not use this for now.
+    public String getFormattedTime() {
         SimpleDateFormat formatter = new SimpleDateFormat("h:mm a");
         formatter.setTimeZone(TimeZone.getTimeZone(getTimeZone()));
-        Date datetime = new Date(getTime()*1000);
+        Date datetime = new Date(getTime() * 1000);
         String timeString = formatter.format(datetime);
         return timeString;
     }
+
+    public String getFormattedDayOfWeek() {
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+        Date d = new Date();
+        String dayOfTheWeek = sdf.format(d);
+        return dayOfTheWeek;
+    }
+
 
     public void setTime(long time) {
         mTime = time;
@@ -93,18 +93,13 @@ public class CurrentWeather {
     }
 
     public double getTemperatureF() {
-        mTemperatureF=((mTemperatureC - 32) * 5 / 9);
-        return (int)Math.round(mTemperatureF);
+        mTemperatureF = ((mTemperatureC - 32) * 5 / 9);
+        return (int) Math.round(mTemperatureF);
     }
-
 
     public void setTemperatureF(double temperatureF) {
         mTemperatureF = temperatureF;
     }
-
-
-
-
 
     public double getHumidity() {
         return mHumidity;
@@ -115,8 +110,8 @@ public class CurrentWeather {
     }
 
     public int getPrecipChance() {
-        double precipPercentage = mPrecipChance*100;
-        return (int)Math.round(precipPercentage);
+        double precipPercentage = mPrecipChance * 100;
+        return (int) Math.round(precipPercentage);
     }
 
     public void setPrecipChance(double precipChance) {
