@@ -8,7 +8,8 @@ public class CurrentWeather {
     //add location later make a function to search city.
     private String mIcon;
     private long mTime;
-    private double mTemperature;
+    private double mTemperatureC;
+    private double mTemperatureF;
     private double mHumidity;
     private double mPrecipChance;
     private String mSummery;
@@ -83,13 +84,27 @@ public class CurrentWeather {
         mTime = time;
     }
 
-    public int getTemperature() {
-        return (int) Math.round(mTemperature);
+    public int getTemperatureC() {
+        return (int) Math.round(mTemperatureC);
     }
 
-    public void setTemperature(double temperature) {
-        mTemperature = temperature;
+    public void setTemperatureC(double temperatureC) {
+        mTemperatureC = temperatureC;
     }
+
+    public double getTemperatureF() {
+        mTemperatureF=((mTemperatureC - 32) * 5 / 9);
+        return (int)Math.round(mTemperatureF);
+    }
+
+
+    public void setTemperatureF(double temperatureF) {
+        mTemperatureF = temperatureF;
+    }
+
+
+
+
 
     public double getHumidity() {
         return mHumidity;

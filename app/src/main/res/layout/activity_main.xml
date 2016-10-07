@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="funhouse.weatherforcast.MainActivity"
-    android:background="@drawable/sky2">
+    android:background="@color/colorDaytime">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

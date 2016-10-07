@@ -29,13 +29,19 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    //http://www.zembedded.com/setting-up-eclipse-and-android-sdk/
+    //http://www.zembedded.com/setting-up-eclipse-and-android-sdk/  how to convert C to F.
+    //need to add F
+    // need to add date (Thu, 9/5/2016)
+    //need to add highest/lowest temp
+    //change city function
+    //more....5 days forcast, hourly forcast, change screen background by sunrise/sunset...
 
     public static final String TAG = MainActivity.class.getSimpleName();
     private CurrentWeather mCurrentWeather;
 
     private TextView mTimeLabel;
-    private TextView mTemperatureLabel;
+    private TextView mTemperatureLabelC;
+    private TextView mTemperatureLabelF;
     private TextView mHumidityValue;
     private TextView mPrecipValue;
     private TextView mSummaryLabel;
@@ -52,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         mTimeLabel = (TextView) findViewById(R.id.timeLabel);
-        mTemperatureLabel = (TextView) findViewById(R.id.tempetureLabelC);
+        mTemperatureLabelC = (TextView) findViewById(R.id.tempetureLabelC);
+        mTemperatureLabelF = (TextView) findViewById(R.id.tempetureLabelF);
         mHumidityValue = (TextView) findViewById(R.id.humidityValue);
         mPrecipValue = (TextView) findViewById(R.id.precipValue);
         mSummaryLabel = (TextView) findViewById(R.id.summaryLabel);
@@ -61,8 +68,6 @@ public class MainActivity extends AppCompatActivity {
         mProgressBar = (ProgressBar)findViewById(R.id.progressBar);
 
         mProgressBar.setVisibility(View.INVISIBLE);
-
-
         final double latitude = 40.730610;
         final double longitude = -73.935242;
 
@@ -150,8 +155,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateDisplay() {
-        mTemperatureLabel.setText(mCurrentWeather.getTemperature() + "");
-        mTimeLabel.setText("At " + mCurrentWeather.getFormattedTime() + " it will be");
+//        Calendar calendar = Calendar.getInstance();
+//        Date date = calendar.getTime();
+//        String weekday = new SimpleDateFormat("EE", Locale.ENGLISH).format(date.getTime());
+
+        mTemperatureLabelC.setText(mCurrentWeather.getTemperatureC() + "");
+        mTemperatureLabelF.setText(mCurrentWeather.getTemperatureF()+"");
+        mTimeLabel.setText(mCurrentWeather.getFormattedTime());
         mHumidityValue.setText(mCurrentWeather.getHumidity() + "");
         mPrecipValue.setText(mCurrentWeather.getPrecipChance() + "%");
         mSummaryLabel.setText(mCurrentWeather.getSummery());
@@ -184,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
         currentWeather.setHumidity(currently.getDouble("humidity"));
         currentWeather.setIcon(currently.getString("icon"));
         currentWeather.setSummery(currently.getString("summary"));
-        currentWeather.setTemperature(currently.getDouble("temperature"));
+        currentWeather.setTemperatureC(currently.getDouble("temperature"));
         currentWeather.setTime(currently.getLong("time"));
         currentWeather.setPrecipChance(currently.getDouble("precipProbability"));
         currentWeather.setTimeZone(timezone);
