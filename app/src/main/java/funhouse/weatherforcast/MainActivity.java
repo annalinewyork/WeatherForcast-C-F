@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
     // need to add date (Thu, 9/5/2016)
     //need to add highest/lowest temp
     //change city function
-    //more....5 days forcast, hourly forcast, change screen background by sunrise/sunset...
+    //5 days forcast, hourly forcast,
+    // change screen background by sunrise/sunset...http://stackoverflow.com/questions/36529507/activity-background-change-dynamic
 
     public static final String TAG = MainActivity.class.getSimpleName();
     private CurrentWeather mCurrentWeather;

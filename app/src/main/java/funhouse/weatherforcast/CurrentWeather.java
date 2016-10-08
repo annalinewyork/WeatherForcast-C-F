@@ -96,7 +96,6 @@ public class CurrentWeather {
     public String getTemperatureF() {
         double mTemperatureF = ((mTemperatureC - 32) * 5 / 9);
         DecimalFormat df = new DecimalFormat("##");
-      //  int f = (int) Math.round(mTemperatureF);
         return df.format(mTemperatureF);
     }
 

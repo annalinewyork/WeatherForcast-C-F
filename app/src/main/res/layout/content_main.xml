@@ -6,13 +6,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="funhouse.weatherforcast.MainActivity"
     tools:showIn="@layout/activity_main">
+
+    <TextView
+        android:id="@+id/locationLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:text="New York, NY"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/timeLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:phoneNumber="false"
+        android:text="..."
+        android:textColor="#80000000"
+        android:textSize="15sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,159 +38,130 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
 
             <LinearLayout
+                android:gravity="right"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tempetureLabelC"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/tempetureLabelC"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="--"
-                        android:textColor="@android:color/black"
-                        android:textSize="40sp"/>
-                    <ImageView
-                        android:id="@+id/degreeImagFeVieweViewF"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/degree_fahrenheit"/>
-
-                </LinearLayout>
-
-                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="--"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="30sp"/>
+                <ImageView
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/degreeImagFeVieweViewF"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/tempetureLabelF"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="--"
-                        android:textColor="@android:color/black"
-                        android:textSize="40sp"/>
-
-                    <ImageView
-                        android:id="@+id/degreeImagFeVieweViewC"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/degree_celsius2"/>
-                </LinearLayout>
-
-            </LinearLayout>
-
-
-            <TextView
-                android:id="@+id/timeLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:phoneNumber="false"
-                android:text="..."
-                android:textColor="#80000000"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:id="@+id/summaryLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=":"
-                android:textColor="#80000000"
-                android:textSize="18sp"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/humidityLabel"
-                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="HUMIDITY"
-                    android:textColor="#80000000"
-                    android:textSize="15sp"/>
-
-                <TextView
-                    android:id="@+id/humidityValue"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="--"
-                    android:textColor="@android:color/black"
-                    android:textSize="24sp"/>
+                    android:src="@drawable/degree_fahrenheit25"/>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
                 <TextView
-                    android:id="@+id/precipLabel"
-                    android:layout_width="match_parent"
+                    android:id="@+id/tempetureLabelF"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="RAIN/SNOW"
-                    android:textColor="#80000000"
-                    android:textSize="15sp"/>
-
-                <TextView
-                    android:id="@+id/precipValue"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
+                    android:layout_centerVertical="true"
                     android:text="--"
-                    android:textColor="@android:color/black"
-                    android:textSize="24sp"/>
+                    android:textColor="@color/colorBlack"
+                    android:textSize="30sp"/>
+
+                <ImageView
+                    android:id="@+id/degreeImagFeVieweViewC"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/degree_celsius25"/>
             </LinearLayout>
+
+
         </LinearLayout>
 
+
         <LinearLayout
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/iconImageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/locationLabel"
-                android:layout_marginTop="-25dp"
                 android:src="@drawable/clear_day"/>
-
-            <ProgressBar
-                android:id="@+id/progressBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
         </LinearLayout>
-
-
     </LinearLayout>
 
-
     <TextView
-        android:id="@+id/locationLabel"
+        android:id="@+id/summaryLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:gravity="center_horizontal"
-        android:text="New York, NY"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"/>
+        android:text=":"
+        android:textColor="#80000000"
+        android:textSize="15sp"/>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/humidityLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Humidity "
+            android:textColor="#80000000"
+            android:textSize="15sp"/>
+        <TextView
+            android:id="@+id/humidityValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="--"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp"/>
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/precipLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Rain/Snow "
+            android:textColor="#80000000"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/precipValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="--"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp"/>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
