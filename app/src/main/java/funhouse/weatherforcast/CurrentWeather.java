@@ -81,7 +81,7 @@ public class CurrentWeather {
         return dayOfTheWeek;
     }
 
-    public String getFoormattedDate(){
+    public String getFormattedDate(){
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd MMM");
         String formattedDate = df.format(c.getTime());
