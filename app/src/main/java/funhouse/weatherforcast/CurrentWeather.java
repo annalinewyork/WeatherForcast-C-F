@@ -2,6 +2,7 @@ package funhouse.weatherforcast;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -78,6 +79,13 @@ public class CurrentWeather {
         Date d = new Date();
         String dayOfTheWeek = sdf.format(d);
         return dayOfTheWeek;
+    }
+
+    public String getFoormattedDate(){
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("dd MMM");
+        String formattedDate = df.format(c.getTime());
+        return formattedDate;
     }
 
 

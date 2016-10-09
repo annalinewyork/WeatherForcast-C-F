@@ -1,5 +1,8 @@
 package funhouse.weatherforcast;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
@@ -29,7 +32,6 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    // need to add date (Thu, 9/5/2016)
     //need to add highest/lowest temp
     //change city function
     //5 days forcast, hourly forcast,
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView mIconImageView;
     private ImageView mRefreshImageIcon;
     private ProgressBar mProgressBar;
+    Fragment mFragment;
 
 
     @Override
@@ -65,6 +68,12 @@ public class MainActivity extends AppCompatActivity {
         mIconImageView = (ImageView) findViewById(R.id.iconImageView);
         mRefreshImageIcon = (ImageView) findViewById(R.id.refreshImageOnToolbar);
         mProgressBar = (ProgressBar)findViewById(R.id.progressBar);
+
+        mFragment = new ForcastFragment();
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.commit();
+
 
         mProgressBar.setVisibility(View.INVISIBLE);
         final double latitude = 40.730610;
@@ -156,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
     private void updateDisplay() {
         mTemperatureLabelC.setText(mCurrentWeather.getTemperatureC() + "");
         mTemperatureLabelF.setText(mCurrentWeather.getTemperatureF() );
-        mTimeLabel.setText(mCurrentWeather.getFormattedDayOfWeek());
+        mTimeLabel.setText(mCurrentWeather.getFormattedDayOfWeek()+", "+" "+ mCurrentWeather.getFoormattedDate());
         mHumidityValue.setText(mCurrentWeather.getHumidity() + "");
         mPrecipValue.setText(mCurrentWeather.getPrecipChance() + "%");
         mSummaryLabel.setText(mCurrentWeather.getSummery());
